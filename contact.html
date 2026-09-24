@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | College Online Voting System</title>
+    <style>
+        :root {
+            --primary-color: #278783;
+            --secondary-color: #ffebd0;
+            --accent-color: #1a5f5c;
+            --text-color: #333;
+            --light-text: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Back button styling */
+        #back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        #back-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        #back-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--light-text);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb {
+            padding: 15px 0;
+            background-color: var(--secondary-color);
+            text-align: center;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+            text-align: center;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .info-icon {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            margin-top: 3px;
+            min-width: 24px;
+        }
+
+        .info-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .info-content p {
+            margin-bottom: 5px;
+        }
+
+        .info-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .info-content a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .contact-info {
+                padding: 25px;
+            }
+
+            .info-item {
+                flex-direction: column;
+            }
+
+            .info-icon {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Back Button -->
+    <button id="back-btn" onclick="window.history.back()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <polyline points="15 18 9 12 15 6" />
+        </svg>
+        Back
+    </button>
+
+    <header>
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>How to reach the Election Committee for support</p>
+        </div>
+    </header>
+
+    <div class="breadcrumb container">
+        <a href="index.html">Home</a> &gt; Contact Us
+    </div>
+
+    <div class="container">
+        <div class="contact-info">
+            <h2>Our Contact Information</h2>
+
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Office Location</h3>
+                    <p>Student Affairs Building, Room 205<br>
+                    S.G Balekundri Institute Of Technology<br>
+                    Shivabasav Nagar,Belagavi<br></p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Email Addresses</h3>
+                    <p><a href="mailto:elections@yourcollege.edu">elections@yourcollege.edu</a> (General Inquiries)</p>
+                    <p><a href="mailto:voting-help@yourcollege.edu">voting-help@yourcollege.edu</a> (Technical Support)</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Phone Numbers</h3>
+                    <p>Main Office: 123456-7890</p>
+                    <p>IT Support: 123456-7891</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Office Hours</h3>
+                    <p>Monday-Friday: 9:00 AM - 5:00 PM</p>
+                    <p>During Elections: 8:00 AM - 8:00 PM daily</p>
+                    <p>Closed on college holidays</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="info-content">
+                    <h3>Emergency Contact</h3>
+                    <p>For urgent election issues outside office hours:</p>
+                    <p><a href="tel:+11234567890">(123) 456-7890 (ext. 555)</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; VoteShpere. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

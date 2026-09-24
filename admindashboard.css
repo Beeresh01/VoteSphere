@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #257a7a, #1a4e4e);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background-image: url('https://support.polyas.com/wp-content/uploads/2024/01/realization-live-voting.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.dashboard-header {
+  background-color: #278783;
+  background-filter: blur(10px);
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  
+}
+
+.header-title {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.header-btn {
+  background-color: #FFEBD0;
+  border: none;
+  color:#000;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.header-btn:hover {
+  background-color: #FFEBD0;
+  transform: translateY(-2px);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  
+  align-items: center;
+  padding: 8rem;
+}
+
+.card-wrapper {
+  display: flex;
+  gap: 3.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background-color: #278783;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 240px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: white;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  background-color: #bcecec;
+}
+
+.card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 80%;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .header-buttons {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
