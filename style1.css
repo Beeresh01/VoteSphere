@@ -1,0 +1,83 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 50px;
+  background-image: url('https://wallpapers.com/images/hd/light-color-background-u5ajon1xr9puabyq.jpg')
+}
+
+h1 {
+  text-align: center;
+  color: #000;
+}
+
+#formContainer {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.candidate-row {
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  background-color: transparent;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.field {
+  flex: 1;
+  min-width: 150px;
+}
+
+.field.wide {
+  flex: 2;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="file"] {
+  width: 100%;
+}
+
+button {
+  background-color: rgba(20, 150, 100, 0.8);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.image-preview-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.image-preview {
+  max-width: 100px;
+  max-height: 100px;
+  display: none;
+  border-radius: 4px;
+}

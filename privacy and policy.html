@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Vote Sphere</title>
+    <style>
+        :root {
+            --primary-color: #278783;
+            --secondary-color: #ffebd0;
+            --accent-color: #1a5f5c;
+            --text-color: #333;
+            --light-text: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Back button styling */
+        #back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        #back-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        #back-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--light-text);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb {
+            padding: 15px 0;
+            background-color: var(--secondary-color);
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .privacy-content {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin: 30px 0;
+        }
+
+        .privacy-content h2 {
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+        }
+
+        .privacy-content h3 {
+            color: var(--accent-color);
+            margin: 20px 0 10px;
+            font-size: 1.3rem;
+        }
+
+        .privacy-content p {
+            margin-bottom: 15px;
+        }
+
+        .privacy-content ul {
+            margin: 15px 0 15px 30px;
+        }
+
+        .privacy-content li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background-color: var(--secondary-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        footer {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        .last-updated {
+            font-style: italic;
+            color: #666;
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .privacy-content {
+                padding: 25px;
+            }
+
+            .privacy-content h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back Button -->
+    <button id="back-btn" onclick="window.history.back()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <polyline points="15 18 9 12 15 6" />
+        </svg>
+        Back
+    </button>
+
+    <header>
+        <div class="container">
+            <h1>Privacy & Policy</h1>
+            <p>How we protect and manage your data in the College Online Voting System</p>
+        </div>
+    </header>
+
+    <div class="breadcrumb container">
+        <a href="1stpage.php">Home</a> &gt; Privacy Policy
+    </div>
+
+    <div class="container">
+        <div class="privacy-content">
+            <p class="last-updated">Last Updated: January 1, 2023</p>
+
+            <h2>1. Introduction</h2>
+            <p>Welcome to the College Online Voting System ("we", "our", or "us"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our online voting platform.</p>
+
+            <div class="highlight-box">
+                <p>By using our voting system, you consent to the data practices described in this policy. If you do not agree with our policies and practices, please do not use our system.</p>
+            </div>
+
+            <h2>2. Information We Collect</h2>
+            <p>We collect several types of information from and about users of our voting system:</p>
+
+            <h3>2.1 Personal Identification Information</h3>
+            <ul>
+                <li>Full name</li>
+                <li>Student identification number</li>
+                <li>College email address</li>
+                <li>Academic department</li>
+                <li>Year of study</li>
+            </ul>
+
+            <h3>2.2 Voting Information</h3>
+            <ul>
+                <li>Candidate selections</li>
+                <li>Time and date of voting</li>
+                <li>Authentication logs</li>
+            </ul>
+
+            <h3>2.3 Technical Information</h3>
+            <ul>
+                <li>IP address</li>
+                <li>Browser type and version</li>
+                <li>Device information</li>
+                <li>System activity logs</li>
+            </ul>
+
+            <h2>3. How We Use Your Information</h2>
+            <p>We use the information we collect for the following purposes:</p>
+            <ul>
+                <li>To verify voter eligibility and prevent duplicate voting</li>
+                <li>To administer and conduct the election process</li>
+                <li>To maintain the security and integrity of the voting system</li>
+                <li>To generate anonymous statistical reports about voter participation</li>
+                <li>To troubleshoot technical issues</li>
+                <li>To comply with legal obligations</li>
+            </ul>
+
+            <h2>4. Data Security</h2>
+            <p>We implement appropriate technical and organizational measures to protect your personal information:</p>
+            <ul>
+                <li>Encryption of all data in transit and at rest</li>
+                <li>Secure authentication protocols</li>
+                <li>Role-based access controls</li>
+                <li>Regular security audits</li>
+                <li>Anonymization of voting records where possible</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p>Your vote remains anonymous. While we record that you have voted to prevent duplicate voting, we do not store records linking your identity to your specific vote choices.</p>
+            </div>
+
+            <h2>5. Data Retention</h2>
+            <p>We retain different types of information for different periods:</p>
+            <ul>
+                <li><strong>Voting records:</strong> Anonymous voting data is retained indefinitely for historical records</li>
+                <li><strong>Authentication logs:</strong> 1 year after the election</li>
+                <li><strong>Personal information:</strong> 30 days after election results are certified</li>
+            </ul>
+
+            <h2>6. Information Sharing</h2>
+            <p>We do not sell or rent your personal information. We may disclose information in these limited circumstances:</p>
+            <ul>
+                <li>To election officials for the purpose of administering the election</li>
+                <li>When required by law or legal process</li>
+                <li>To protect the security and integrity of the voting system</li>
+                <li>To prevent or investigate possible wrongdoing</li>
+            </ul>
+
+            <h2>7. Your Rights</h2>
+            <p>Depending on your jurisdiction, you may have certain rights regarding your personal information:</p>
+            <ul>
+                <li><strong>Access:</strong> Request a copy of your personal data we hold</li>
+                <li><strong>Correction:</strong> Request correction of inaccurate data</li>
+                <li><strong>Deletion:</strong> Request deletion of your personal data after the election</li>
+                <li><strong>Objection:</strong> Object to certain processing activities</li>
+            </ul>
+
+            <h2>8. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy periodically. We will notify users of significant changes through the college's official communication channels. Your continued use of the voting system after such modifications constitutes your acknowledgment of the modified policy.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Vote Sphere. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

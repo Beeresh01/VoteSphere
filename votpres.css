@@ -1,0 +1,176 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0fdaf0;
+    background-image: url("https://deepsync.com/wp-content/uploads/2025/02/B2B-blog-header-1080x675.png");
+    background-repeat: no-repeat;
+    background-size: cover; /* This makes the image cover the entire page */
+    background-position: center; /* Centers the image */
+    background-attachment: fixed; /* Optional: keeps image fixed during scrolling */
+    margin: 0;
+    padding: 0;
+    color: #333;
+    min-height: 100vh; /* Ensures full viewport height */
+}
+
+
+/* ... all other existing CSS rules remain unchanged ... */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.container {
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+.subtitle {
+    text-align: center;
+    color: snow;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    margin-bottom: 40px;
+    font-size: 1.2rem;
+}
+
+.candidates {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.candidate {
+    background-color:rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+.candidate:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.candidate-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #278783;
+}
+
+.candidate-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.candidate h2 {
+    color: whitesmoke;
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+}
+
+.candidate p {
+    color: floralwhite;
+    margin: 8px 0;
+    font-size: 1rem;
+}
+
+.vote-btn {
+    background-color: #278783;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.vote-btn:hover {
+    background-color: #034948;
+}
+
+.vote-btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.voted {
+    border: 2px solid #27ae60;
+    background-color: #f8fff9;
+}
+
+.voted .vote-btn {
+    background-color: #27ae60;
+}
+
+.vote-count {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #3498db;
+    font-weight: bold;
+}
+
+.candidate.voted .vote-count {
+    color: #27ae60;
+}
+
+@media (max-width: 768px) {
+    .candidates {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .candidates {
+        grid-template-columns: 1fr;
+    }
+    
+    .back-button {
+        top: 10px;
+        left: 10px;
+        font-size: 1rem;
+        padding: 5px 10px;
+    }
+}  
+.p{
+    color: salmon;
+     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}

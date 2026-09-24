@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOTESPHERE | College Election System</title>
+     <link rel="website icon" type="jpg" href="https://pbs.twimg.com/profile_images/1373505300204904450/D25WHQaI_400x400.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern College Color Theme */
+        :root {
+            --primary: #1A4B8C;   /* University blue */
+            --secondary: #E31937; /* School red */
+            --accent: #FFC72C;    /* Gold accent */
+            --light: #F8F9FA;
+            --dark: #212529;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            padding-top: 100px;
+            overflow-x: hidden;
+        }
+
+        /* University Masthead */
+        .university-bar {
+            background-color: white;
+            padding: 12px 0;
+            text-align: left; /* Changed from center to left */
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 2000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid var(--accent);
+            display: flex;
+            align-items: center;
+            padding-left: 20px; /* Added padding to left */
+        }
+
+        .university-logo {
+            height: 50px;
+            margin-right: 15px; /* Changed from margin-bottom to margin-right */
+        }
+        .university-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Main Navigation Header */
+        .main-header {
+            position: fixed;
+            top: 83px;
+            left: 0;
+            width: 100%;
+            background: var(--gradient);
+            color: white;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 15px 8%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .main-header.scrolled {
+            top: 0;
+            padding: 10px 8%;
+        }
+
+        .back-button {
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            margin-right: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 12px;
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 75, 140, 0.8), rgba(26, 75, 140, 0.9)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: white;
+            text-align: center;
+            padding: 150px 8% 100px;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: 50px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button.outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .cta-button i {
+            margin-right: 10px;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 8%;
+        }
+
+        section {
+            margin-bottom: 80px;
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section:hover {
+            transform: translateY(-10px);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin: 35px 0 20px;
+            font-size: 1.6rem;
+        }
+
+        p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 30px;
+        }
+
+        li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 35px;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        ol {
+            counter-reset: ol-counter;
+        }
+
+        ol li {
+            counter-increment: ol-counter;
+            list-style-type: none;
+        }
+
+        ol li::before {
+            content: counter(ol-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--gradient);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid var(--accent);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 75, 140, 0.03), rgba(227, 25, 55, 0.03));
+            z-index: 0;
+        }
+
+        .feature-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        .feature-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover h4 {
+            color: var(--secondary);
+        }
+
+        /* Testimonial */
+        .testimonial {
+            background: var(--gradient);
+            color: white;
+            padding: 50px;
+            border-radius: 15px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 10rem;
+            color: rgba(255, 255, 255, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-text {
+            font-size: 1.4rem;
+            font-style: italic;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            text-align: right;
+            font-size: 1.1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .faq-question {
+            padding: 25px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #153a6d;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-question {
+            background: var(--secondary);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 25px;
+            max-height: 500px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 8% 40px;
+            margin-top: 80px;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo i {
+            margin-right: 15px;
+            color: var(--accent);
+        }
+
+        .footer-about {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .footer-heading {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link-item {
+            margin-bottom: 15px;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .footer-link i {
+            margin-right: 10px;
+            color: var(--accent);
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .main-header {
+                padding: 15px 5%;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 120px 5% 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 90px;
+            }
+            
+            .main-header {
+                top: 73px;
+            }
+            
+            .university-logo {
+                height: 40px;
+            }
+            
+            .hero {
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+                padding: 100px 5% 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            section {
+                padding: 35px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding-top: 80px;
+            }
+            
+            .main-header {
+                top: 63px;
+                padding: 10px 5%;
+            }
+            
+            .back-button {
+                width: 40px;
+                height: 40px;
+                margin-right: 15px;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .logo i {
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- University Bar -->
+    <div class="university-bar">
+        <img src="https://pbs.twimg.com/profile_images/1373505300204904450/D25WHQaI_400x400.jpg" alt="University Logo" class="university-logo">
+        <div class="university-name">S G Balekundri Institute Of Technology</div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header" id="main-header">
+        <button class="back-button" onclick="goBack()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <div class="logo">
+            <i class="fas fa-vote-yea"></i>
+            <span>VOTESPHERE</span>
+        </div>
+        <div class="nav-links">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#how-it-works" class="nav-link">How It Works</a>
+            <a href="#security" class="nav-link">Security</a>
+            <a href="#testimonials" class="nav-link">Testimonials</a>
+            <a href="#faq" class="nav-link">FAQ</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="floating">Your Vote Matters</h1>
+            <p style="color:white;">VOTESPHERE revolutionizes campus elections with secure, accessible online voting for student government, organizations, and campus-wide decisions. Cast your vote anytime, anywhere with just a few clicks.</p>
+            <div class="cta-buttons">
+                <a href="#how-it-works" class="cta-button">
+                    <i class="fas fa-play-circle"></i> How It Works
+                </a>
+                <a href="#features" class="cta-button outline">
+                    <i class="fas fa-star"></i> Explore Features
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <section id="features">
+            <h2>Designed for Campus Elections</h2>
+            <p>VOTESPHERE offers specialized features tailored to university voting needs, ensuring secure, accessible, and efficient elections for the entire student body.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h4>Student Verification</h4>
+                    <p>Integrated with university systems to authenticate eligible voters using student USNs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Mobile Voting</h4>
+                    <p>Students can vote from any device - smartphones, tablets, or computers - anywhere on or off campus.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h4>Secure Platform</h4>
+                    <p>Military-grade encryption and blockchain technology protect voter anonymity and prevent fraud.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Real-Time Analytics</h4>
+                    <p>Track participation rates and view preliminary results as votes are cast (with admin controls).</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4>Flexible Elections</h4>
+                    <p>Support for multiple election types with customizable voting periods and ballot designs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h4>Candidate Profiles</h4>
+                    <p>Integrated platform for candidates to share their platforms and campaign materials.</p>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">3x</div>
+                    <div class="stat-label">Higher Participation</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Accessibility</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Voting Availability</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Counting Errors</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works">
+            <h2>How VOTESPHERE Works</h2>
+            <p>Our streamlined process makes campus voting simpler and more accessible than ever before:</p>
+            
+            <ol>
+                <li><strong>Student Authentication</strong> - Log in using your university credentials to verify eligibility</li>
+                <li><strong>Access Your Ballot</strong> - View all current elections you're eligible to vote in</li>
+                <li><strong>Make Your Selections</strong> - Easy-to-use interface with candidate information</li>
+                <li><strong>Review & Submit</strong> - Confirm your choices before final submission</li>
+                <li><strong>Receipt & Confirmation</strong> - Get instant verification that your vote was counted</li>
+            </ol>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <p class="testimonial-text" style="color: white;">"VOTESPHERE transformed our student government elections. Participation rates jumped from 18% to 63% in the first year, and we eliminated all the headaches of paper ballots and manual counting."</p>
+                    <p class="testimonial-author" style="color: white;">— Jessica Morales, Student Body President</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="security">
+            <h2>Security You Can Trust</h2>
+            <p>We've built VOTESPHERE with multiple layers of security to protect the integrity of your campus elections:</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h4>End-to-End Encryption</h4>
+                    <p>All votes are encrypted from the moment they're cast until final tabulation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-fingerprint"></i>
+                    </div>
+                    <h4>Multi-Factor Authentication</h4>
+                    <p>Students verify identity through multiple methods while maintaining anonymity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h4>Blockchain Technology</h4>
+                    <p>Immutable ledger records votes without revealing voter identity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Anti-Tampering Protections</h4>
+                    <p>Advanced algorithms detect and prevent any attempts at manipulation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How do I know my vote remains anonymous?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>VOTESPHERE uses cryptographic separation between voter authentication and ballot submission. While we verify you're eligible to vote, your actual ballot is completely anonymous and cannot be tied back to your identity.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What if I don't have a smartphone or computer?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The university provides voting kiosks in the student union, library, and computer labs during election periods. You can also check out devices from the student affairs office.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How does this compare to traditional paper ballots?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>VOTESPHERE is more secure (no lost or miscounted ballots), more accessible (vote from anywhere), more efficient (instant results), and more environmentally friendly (no paper waste). It also provides better voter engagement through candidate profiles and election information.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I change my vote after submitting?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>During the voting period, you can revisit and change your ballot as many times as you like. Only your final submission before the deadline will be counted.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How are election results verified?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>After polls close, the system generates a verifiable audit trail that election officials can review before certifying results. This process maintains anonymity while allowing verification of the vote count accuracy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="get-started">
+            <h2>Ready to Vote?</h2>
+            <p>The next student government election begins on <strong>November 15, 2023</strong>. All currently enrolled students are eligible to participate.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button">
+                    <i class="fas fa-sign-in-alt"></i> Login to Vote Now
+                </a>
+                <a href="#" class="cta-button outline">
+                    <i class="fas fa-user-graduate"></i> Meet the Candidates
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <i class="fas fa-vote-yea"></i>
+                    <span>VOTESPHERE</span>
+                </div>
+                <p class="footer-about">The leading online voting platform for higher education institutions, trusted by over 200 universities worldwide.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li class="footer-link-item">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-right"></i> Upcoming Elections
+                        </a>
+                    </li>
+                    <li class="footer-link-item">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-right"></i> Election Calendar
+                        </a>
+                    </li>
+                    <li class="footer-link-item">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-right"></i> Candidate Information
+                        </a>
+                    </li>
+                    <li class="footer-link-item">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-right"></i> Voter Resources
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">Support</h3>
+                <ul class="footer-links">
+                    <li class="footer-link-item">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-right"></i> Help Center
+                        </a>
+                    </li>
+                    <li class="footer-link-item">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-right"></i> Contact Us
+                        </a>
+                    </li>
+                    <li class="footer-link-item">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-right"></i> Accessibility Services
+                        </a>
+                    </li>
+                    <li class="footer-link-item">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-right"></i> Report an Issue
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">Legal</h3>
+                <ul class="footer-links">
+                    <li class="footer-link-item">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-right"></i> Terms of Service
+                        </a>
+                    </li>
+                    <li class="footer-link-item">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-right"></i> Privacy Policy
+                        </a>
+                    </li>
+                    <li class="footer-link-item">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-right"></i> Election Policies
+                        </a>
+                    </li>
+                    <li class="footer-link-item">
+                        <a href="#" class="footer-link">
+                            <i class="fas fa-chevron-right"></i> Code of Conduct
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 VOTESPHERE Campus Elections. A service of S G Balekundri student Union.
+        </div>
+    </footer>
+
+    <script>
+        // Back button functionality
+        function goBack() {
+            window.history.back();
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+                // Close other open items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Animate stats counting
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const duration = 2000; // Animation duration in ms
+            const startTime = Date.now();
+            
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                const suffix = stat.textContent.match(/\D+$/)?.[0] || '';
+                const start = 0;
+                
+                const animate = () => {
+                    const now = Date.now();
+                    const progress = Math.min((now - startTime) / duration, 1);
+                    const current = Math.floor(progress * target);
+                    
+                    stat.textContent = current + suffix;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(animate);
+                    }
+                };
+                
+                animate();
+            });
+        }
+        
+        // Only animate when stats section is in view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const statsSection = document.querySelector('#features');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+    </script>
+</body>
+</html>

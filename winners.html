@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Election Results | Online Voting System</title>
+    <link rel="stylesheet" href="winners.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Vote<span>Sphere</span></div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Election Results</h1>
+
+        <div class="results-container">
+            <div class="election-info">
+                <div>
+                    <h3>Student Union Elections</h3>
+                    <p>University Election Commission</p>
+                </div>
+                <div>
+                    <p><strong>Total Votes Cast:</strong> <span id="totalVotes">0</span></p>
+                    <p><strong>Voter Turnout:</strong> <span id="voterTurnout">0</span>%</p>
+                </div>
+            </div>
+
+            <div class="position-tabs">
+                <div class="position-tab active" onclick="showPosition('president')">President</div>
+                <div class="position-tab" onclick="showPosition('vice-president')">Vice President</div>
+                <div class="position-tab" onclick="showPosition('cultural-secretary')">Cultural Secretary</div>
+                <div class="position-tab" onclick="showPosition('sports-secretary')">Sports Secretary</div>
+            </div>
+
+            <div id="president-results">
+                <div class="no-results">Election results will be displayed here after voting concludes</div>
+            </div>
+            <div id="vice-president-results" style="display: none;">
+                <div class="no-results">Election results will be displayed here after voting concludes</div>
+            </div>
+            <div id="cultural-secretary-results" style="display: none;">
+                <div class="no-results">Election results will be displayed here after voting concludes</div>
+            </div>
+            <div id="sports-secretary-results" style="display: none;">
+                <div class="no-results">Election results will be displayed here after voting concludes</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Vote Sphere. All rights reserved.</p>
+            <p>University Election Commission | Secure Digital Voting Platform</p>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="winners.js"></script>
+</body>
+</html>

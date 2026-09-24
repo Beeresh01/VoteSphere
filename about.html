@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Votesphere - Secure Digital Voting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #278783;
+            --secondary: #ffebd0;
+            --accent: #1a5f5c;
+            --dark: #0a1128;
+            --light: #f8f9fa;
+            --text: #333;
+            --light-text: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* Back button */
+        #back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        #back-btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        #back-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--light-text);
+            padding: 100px 0 150px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.1)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-block;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .intro-section {
+            background-color: var(--secondary);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .section-title.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .intro-text.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .features {
+            padding: 100px 0;
+            background-color: #f5f8fc;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.03;
+            z-index: 0;
+        }
+        
+        .features-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+        
+        .feature-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .feature-card:nth-child(1) { transition-delay: 0.1s; }
+        .feature-card:nth-child(2) { transition-delay: 0.3s; }
+        .feature-card:nth-child(3) { transition-delay: 0.5s; }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary);
+        }
+        
+        .feature-content {
+            padding: 30px;
+            position: relative;
+            background: white;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .feature-list {
+            list-style-type: none;
+            margin-top: 20px;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .feature-list li::before {
+            content: "✓";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .mission-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            text-align: center;
+            position: relative;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        .mission-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .mission-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title.light {
+            color: white;
+        }
+        
+        .section-title.light::after {
+            background: var(--secondary);
+        }
+        
+        .mission-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .mission-text.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cta-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .btn.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+        
+        footer {
+            background: var(--accent);
+            color: var(--light-text);
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary);
+        }
+        
+        .footer-social {
+            margin: 20px 0;
+        }
+        
+        .footer-social a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            header {
+                padding: 80px 0 120px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 0 100px;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .intro-section, .features, .mission-section, .cta-section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .mission-section {
+                clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-card {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <button id="back-btn" onclick="window.history.back()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <polyline points="15 18 9 12 15 6" />
+        </svg>
+        Back
+    </button>
+
+    <header>
+        <div class="header-content">
+            <h1 class="logo">VOTE<span>SPHERE</span></h1>
+            <p class="tagline">A secure, efficient, and user-friendly platform designed to streamline the election process at your college</p>
+        </div>
+    </header>
+    
+    <section class="intro-section">
+        <div class="container">
+            <h2 class="section-title" id="introTitle">Democracy Made Digital</h2>
+            <p class="intro-text" id="introText">
+                Our system is built with two main panels - Voter Panel and Admin Panel - ensuring a transparent and organized election experience for both students and administrators. With robust security measures and an intuitive interface, we're revolutionizing how college elections are conducted.
+            </p>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="container features-content">
+            <h2 class="section-title" id="featuresTitle">Key Features</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card" id="featureCard1">
+                    <div class="feature-content">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="feature-title">Voter Panel</h3>
+                        <p>Designed for students to actively participate in the election process with ease:</p>
+                        <ul class="feature-list">
+                            <li>Secure registration with college credentials</li>
+                            <li>Easy login with authentication</li>
+                            <li>Intuitive candidate voting interface</li>
+                            <li>Prevents duplicate or fraudulent votes</li>
+                            <li>Accessible from any device</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="feature-card" id="featureCard2">
+                    <div class="feature-content">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3 class="feature-title">Admin Panel</h3>
+                        <p>Exclusive control for election administrators to manage the process:</p>
+                        <ul class="feature-list">
+                            <li>Add and manage candidates</li>
+                            <li>Monitor voting in real-time</li>
+                            <li>Ensure fair and unbiased elections</li>
+                            <li>Single admin account for security</li>
+                            <li>Generate election reports</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="feature-card" id="featureCard3">
+                    <div class="feature-content">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="feature-title">Security Features</h3>
+                        <p>Our system prioritizes the integrity of your elections:</p>
+                        <ul class="feature-list">
+                            <li>End-to-end encryption</li>
+                            <li>Secure authentication</li>
+                            <li>Tamper-proof voting</li>
+                            <li>Anonymous voting</li>
+                            <li>Audit trails</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="mission-section">
+        <div class="container mission-content">
+            <h2 class="section-title light" id="missionTitle">Our Mission</h2>
+            <p class="mission-text" id="missionText">
+                To empower educational institutions with a digital voting solution that is fast, secure, and truly democratic. We believe every student's voice should be heard, and every election should be conducted with the highest standards of fairness and transparency.
+            </p>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <a href="#" class="btn" id="ctaBtn">Get Started Today</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">VOTE<span>SPHERE</span></div>
+            <p>Building the future of democratic participation.</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2023 Votesphere. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // One-time scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements to animate
+            const elementsToAnimate = [
+                { id: 'introTitle', delay: 0 },
+                { id: 'introText', delay: 100 },
+                { id: 'featuresTitle', delay: 0 },
+                { id: 'featureCard1', delay: 100 },
+                { id: 'featureCard2', delay: 300 },
+                { id: 'featureCard3', delay: 500 },
+                { id: 'missionTitle', delay: 0 },
+                { id: 'missionText', delay: 100 },
+                { id: 'ctaBtn', delay: 200 }
+            ];
+            
+            // Create intersection observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const delay = element.dataset.animationDelay || 0;
+                        
+                        setTimeout(() => {
+                            element.classList.add('animate');
+                        }, delay);
+                        
+ // Stop observing after animation triggers
+                        observer.unobserve(element);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe each element
+            elementsToAnimate.forEach(item => {
+                const element = document.getElementById(item.id);
+                if (element) {
+                    element.dataset.animationDelay = item.delay;
+                    observer.observe(element);
+                }
+            });
+            
+            // Header animations (play immediately on load)
+            document.querySelector('.logo').style.animationPlayState = 'running';
+            document.querySelector('.tagline').style.animationPlayState = 'running';
+        });
+    </script>
+</body>
+</html>
